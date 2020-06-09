@@ -3396,3 +3396,56 @@ function getSuns(event) {
     }
 }
 bd.addEventListener("mousemove", getSuns);
+
+
+
+
+
+
+
+
+
+
+
+
+
+//nomal variables
+var container = $("#loading");
+var width = parseInt(container.css("width"));
+
+var height = parseInt(container.css("height"));
+
+//set up camera, scene
+var camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 1000);
+var scene = new THREE.Scene();
+
+//add render
+var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+console.log(container.width());
+console.log(container.height());
+renderer.setSize(850, 850);
+container.append(renderer.domElement);
+
+//add loader to get scene.gltf
+
+var loader = new THREE.GLTFLoader();
+loader.load( 'https://raw.githubusercontent.com/ricardoolivaalonso/Codepen/master/Card/models/drone/scene.gltf', function ( gltf ) {
+  scene.add( gltf.scene );
+  animate();
+}, undefined, function ( error ) {
+  console.log('error');
+	console.error( error );
+} );
+
+function animate() {
+	requestAnimationFrame(animate);
+	// house.rotation.z += 0.007;
+	renderer.render(scene, camera);
+}
+
+
+https://raw.githubusercontent.com/ricardoolivaalonso/Codepen/master/Card/models/drone/scene.gltf
+
+
+https://raw.githubusercontent.com/fengtao321/threeJS/master/scene.gltf
+
